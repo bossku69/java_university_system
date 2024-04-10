@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 /*
 README:
-    - this is a 100% original hard work by Yudesh Kumar, no AI was used at all in the creation of this original work.
+    - this is a 100% original hard work by i23024629, no AI was used at all in the creation of this original work.
     - while the concepts such as univeristy being the main file / program may be flawed,it demonstrates originality in the work done here
     - there is zero prior experience with Java and any other programming language, hence this program involved very hard work.
 
