@@ -17,6 +17,10 @@ public class User {
         }
     }
 
+    /*
+    1. getter functions are used below to obtain private variables and data that is inaccessible directly by instances due to access control and scope
+    2. this keyword represents the context of the object accessing the variable, where only the value associated with the particular instance is accessed here
+    */
     public String getUsername(){
         return this.username;
     }

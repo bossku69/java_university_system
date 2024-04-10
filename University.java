@@ -3,34 +3,56 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+README:
+    - this is a 100% original hard work by Yudesh Kumar, no AI was used at all in the creation of this original work.
+    - while the concepts such as univeristy being the main file / program may be flawed,it demonstrates originality in the work done here
+    - there is zero prior experience with Java and any other programming language, hence this program involved very hard work.
+
+
+1. The university is the main class & is where the main program sits
+2. the university is not treated as a separate object requiring instantiation, it is itself where the main program lives and is dependent on the other classes.
+3. As there are no wrong or right answers, it is merely my interpretation of the question and how i have modelled my system.
+4. in a nutshell, University.java = main.java (equivalent) which means that the student management system is the university itself
+
+5. other functions are defined further down the program handling procedures such as:
+    - defining new class instances
+    - method calls
+
+6. a user represents neither a student object not admin object directly but is merely a representation of the access and authorisation required for accessing the student management system
+*/
 public class University {
     //create sample courses here for when program runs:
     static Course chem = new Course("Chemistry", "Subject about reagents, acids & bases", "Dr. Adam", 1102, 15);
     static Course mat = new Course("Mathematics", "Study of algebra & calculus", "Dr. Farah", 1231, 30);
     static Course[] preCourses = {chem, mat};
 
-
+    //declare array lists as static due to availability of these variables to methods without instantiation of University
     static ArrayList<Course> courseList = new ArrayList<Course>(Arrays.asList(preCourses));
     static ArrayList<Enrolment> enrolList = new ArrayList<Enrolment>();
     static ArrayList<Student> studentList = new ArrayList<Student>();
     static ArrayList<User> userList = new ArrayList<>();
+
 
     public static void main(String[] args){
         boolean programFlag = true;
         boolean[] loginFlag;
         int selection;
         Scanner blank_input = new Scanner(System.in);
+
+        //this is for when the program first runs
         if (userList.toArray().length == 0) {
             System.out.println("\nFirst Program execution detected! Welcome to the program! You will be guided to create a user account first!\n");
             userList.add(newStudentUser());
         }
+        //this is the main while loop for the overall program to run continuously:
         while (programFlag) {
             Scanner landing_scan = new Scanner(System.in);
 
             System.out.print("\033[H\033[2J");
             System.out.flush();
-            System.out.println("Welcome to the main landing page! Would you like to login or create a new user?");
-            System.out.print("1. Create new student user\n2. Create new admin user\n3.Login\n4.Exit\nWhat is your selection? : ");
+            System.out.println("\nWelcome to the main landing page! Would you like to login or create a new user?");
+            System.out.print("1. Create new student user\n2. Create new admin user\n3.Login\n4.Exit\n\nWhat is your selection? : ");
             int landing_input = landing_scan.nextInt();
             landing_scan.nextLine();
 
@@ -221,6 +243,12 @@ public class University {
         System.out.println("program will exit...");
     }
 
+/*
+1.this class is for creating student users who will be part of the self defined User class.
+2. User instances created are not equivalent to Student instances but are representations of their login accounts only
+3. Further instantiation of student objects will be done in other methods but this method serves to allow only authorised users to login to the system
+4. static keyword is used here because this method is used in a static context (main is a static method)
+ */
     public static User newStudentUser(){
         String username, password;
         Scanner s = new Scanner(System.in);
@@ -236,6 +264,9 @@ public class University {
         return new User(username, password, "student");
     }
 
+/*
+1. Similar to the concept above, method catering solely for admin users
+*/
     public static User newAdminUser(){
         String username, password;
         Scanner s = new Scanner(System.in);
@@ -251,6 +282,10 @@ public class University {
         return new User(username, password, "admin");
     }
 
+/*
+1. this method is for the login procedure that will be called my the program
+2. this function call utilises the User object method in the program to perform validation of credentials entered
+*/
     public static boolean[] login(){
         int attempt = 1;
         int occupation_input,credentialCounter = 0;
@@ -297,6 +332,10 @@ public class University {
         return arr;
     }
 
+/*
+1. this is the user menu displayed to admin users only
+2. the page that they will revert to whenever they are return to the option selection flow
+*/
     public static int adminMenu(){
         Scanner s = new Scanner(System.in);
         int selection;
