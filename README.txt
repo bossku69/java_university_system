@@ -1,6 +1,6 @@
 Note:
 
-1. This work is 100% original by Yudesh Kumar, without any use of AI whatsoever and in any capacity
+1. This work is 100% original work by student id i23024629, without any use of AI whatsoever and in any capacity
 2. This work was done with alot of hardwork without any prior knowledge in programming languages and Java
 
 3. This program was created without the type checking of input variables, hence it is strong advised to follow the specified data type during input. Where otherwise not specified, it can be assumed that the data type required is a string.
